@@ -1,40 +1,140 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🌐 Portfolio Builder - Frontend (Next.js + Tailwind CSS)
 
-## Getting Started
+This is the frontend of the **Portfolio Website Automation Platform** built using **Next.js** and **Tailwind CSS**. It allows users to:
 
-First, run the development server:
+* View and manage dashboard analytics
+* Create or import portfolio templates
+* Build a profile through a multi-section form
+
+---
+
+## 🚀 Tech Stack
+
+* **Framework**: [Next.js](https://nextjs.org/)
+* **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+* **Icons**: React Icons, Lucide React
+* **Language**: TypeScript
+
+---
+
+## 📁 Project Structure
+
+```
+.
+├── components/           # Reusable UI components
+│   ├── Header.tsx
+│   ├── DropdownMenu.tsx
+│   ├── ActionCard.tsx
+│   ├── MetricCard.tsx
+│   ├── PortfolioCard.tsx
+│   └── TemplateCard.tsx
+│
+├── forms/                # Modular form sections
+│   ├── ProfileForm.tsx
+│   ├── EducationForm.tsx
+│   ├── ExperienceForm.tsx
+│   └── CertificationForm.tsx
+│
+├── pages/                # Route pages
+│   ├── index.tsx         # Dashboard
+│   ├── profile.tsx       # Profile builder
+│   ├── templates.tsx     # Template browser
+│   ├── settings.tsx
+│   ├── _app.tsx          # Custom App
+│   ├── _document.tsx     # Custom Document
+│   └── 404.tsx
+│
+├── styles/
+│   └── globals.css       # Tailwind styles
+│
+├── tailwind.config.js
+├── postcss.config.js
+├── package.json
+└── README.md
+```
+
+---
+
+## 🛠️ Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+https://github.com/your-org/portfolio-builder.git
+cd portfolio-builder
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Setup Tailwind CSS
+
+Already configured. Ensure the following exists:
+
+* `tailwind.config.js`
+* `postcss.config.js`
+* Tailwind imports in `styles/globals.css`:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### 4. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` to view the app.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 🌟 Contribution Guidelines
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+* Always **create a new branch** when working on a new page or feature.
+* If a branch like `dev_{branch_name}` already exists, it means someone is working on that page. Do **not** edit directly on that branch.
+* Preferred branch naming:
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+  * `main` – clean stable production
+  * `production` – deployment
+  * `dev` – integration branch
+  * `dev_index`, `dev_profile`, `dev_templates` – page-specific work
 
-## Learn More
+### 📘 Git Commands to Use
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Clone the repository
+git clone https://github.com/your-org/portfolio-builder.git
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+# Create and switch to a new branch
+git checkout -b dev_{feature_name}
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Stage changes
+git add .
 
-## Deploy on Vercel
+# Commit your changes
+git commit -m "feat: implemented {feature_name} page"
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Push the new branch
+git push origin dev_{feature_name}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+* Run `npm run lint` before PRs.
+* Keep components modular and reusable.
+
+---
+
+## ✅ Todos
+
+* [x] Create base layout
+* [x] Setup routing to 3 core pages
+* [x] Build dropdown menu logic
+* [x] Setup Tailwind properly
+* [ ] Connect backend API (WIP)
+
+---
