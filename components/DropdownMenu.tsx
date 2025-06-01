@@ -5,6 +5,11 @@ import { Settings, UserCircle } from 'lucide-react';
 export default function DropdownMenu({ onClose }: { onClose: () => void }) {
   const router = useRouter();
 
+  const handleLogOut = () => {
+    onClose();
+    router.push('/login');
+  };
+
   return (
     <div className="absolute right-0 top-8 w-48 bg-white shadow-md rounded-md overflow-hidden z-10">
       <div className="px-4 py-2 font-semibold border-b">Account</div>
@@ -26,7 +31,9 @@ export default function DropdownMenu({ onClose }: { onClose: () => void }) {
       >
         <Settings size={16} /> Settings
       </button>
-      <button className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-sm text-red-600">
+      <button 
+      onClick={handleLogOut}
+      className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-sm text-red-600">
         <FiLogOut size={16} /> Log out
       </button>
     </div>
