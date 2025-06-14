@@ -1,41 +1,44 @@
-import { useRouter } from 'next/router';
-import { FiLogOut } from 'react-icons/fi';
-import { Settings, UserCircle } from 'lucide-react';
+"use client"
+
+import { useRouter } from "next/navigation"
+import { LogOut, Settings, UserCircle } from "lucide-react"
 
 export default function DropdownMenu({ onClose }: { onClose: () => void }) {
-  const router = useRouter();
+  const router = useRouter()
 
   const handleLogOut = () => {
-    onClose();
-    router.push('/login');
-  };
+    onClose()
+    router.push("/login")
+  }
+
+  const handleNavigation = (path: string) => {
+    onClose()
+    router.push(path)
+  }
 
   return (
-    <div className="absolute right-0 top-8 w-48 bg-white shadow-md rounded-md overflow-hidden z-10">
-      <div className="px-4 py-2 font-semibold border-b">Account</div>
+    <div className="absolute right-0 top-8 w-48 bg-white shadow-lg rounded-lg overflow-hidden z-20 border border-gray-200">
+      <div className="px-4 py-3 font-semibold border-b border-gray-100 text-gray-900">Account</div>
       <button
-        onClick={() => {
-          router.push('/profile');
-          onClose();
-        }}
-        className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-sm"
+        onClick={() => handleNavigation("/profile")}
+        className="w-full text-left px-4 py-3 hover:bg-gray-50 flex items-center gap-3 text-sm text-gray-700 transition-colors"
       >
-        <UserCircle size={16} /> Profile
+        <UserCircle className="w-4 h-4" /> Profile
       </button>
       <button
-        onClick={() => {
-          router.push('/settings');
-          onClose();
-        }}
-        className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-sm"
+        onClick={() => handleNavigation("/settings")}
+        className="w-full text-left px-4 py-3 hover:bg-gray-50 flex items-center gap-3 text-sm text-gray-700 transition-colors"
       >
-        <Settings size={16} /> Settings
+        <Settings className="w-4 h-4" /> Settings
       </button>
-      <button 
-      onClick={handleLogOut}
-      className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-sm text-red-600">
-        <FiLogOut size={16} /> Log out
-      </button>
+      <div className="border-t border-gray-100">
+        <button
+          onClick={handleLogOut}
+          className="w-full text-left px-4 py-3 hover:bg-red-50 flex items-center gap-3 text-sm text-red-600 transition-colors"
+        >
+          <LogOut className="w-4 h-4" /> Log out
+        </button>
+      </div>
     </div>
-  );
+  )
 }
