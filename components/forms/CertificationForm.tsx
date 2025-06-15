@@ -1,148 +1,57 @@
-"use client"
-
-import { Award, Plus, Trash2 } from "lucide-react"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-
-interface CertificationEntry {
-  id: string
-  name: string
-  organization: string
-  issueDate: string
-  expiryDate: string
-  credentialId: string
-  credentialUrl: string
-}
+import { FiTrash, FiPlus, FiAward } from 'react-icons/fi';
 
 export default function CertificationForm() {
-  const [certifications, setCertifications] = useState<CertificationEntry[]>([
-    {
-      id: "1",
-      name: "",
-      organization: "",
-      issueDate: "",
-      expiryDate: "",
-      credentialId: "",
-      credentialUrl: "",
-    },
-  ])
-
-  const addCertification = () => {
-    const newCertification: CertificationEntry = {
-      id: Date.now().toString(),
-      name: "",
-      organization: "",
-      issueDate: "",
-      expiryDate: "",
-      credentialId: "",
-      credentialUrl: "",
-    }
-    setCertifications([...certifications, newCertification])
-  }
-
-  const removeCertification = (id: string) => {
-    setCertifications(certifications.filter((cert) => cert.id !== id))
-  }
-
-  const updateCertification = (id: string, field: keyof CertificationEntry, value: string) => {
-    setCertifications(certifications.map((cert) => (cert.id === id ? { ...cert, [field]: value } : cert)))
-  }
-
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2">
-          <Award className="w-5 h-5 text-blue-600" />
-          <h2 className="text-lg font-semibold text-gray-900">Certifications</h2>
-        </div>
-        <Button
-          onClick={addCertification}
-          variant="outline"
-          size="sm"
-          className="bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-200"
-        >
-          <Plus className="w-4 h-4 mr-1" />
-          Add Certification
-        </Button>
-      </div>
-
-      <p className="text-sm text-gray-600 mb-6">Add your professional certifications and credentials</p>
-
-      {certifications.map((certification, index) => (
-        <div key={certification.id} className="mb-6 p-4 border border-gray-200 rounded-lg relative">
-          {certifications.length > 1 && (
-            <Button
-              onClick={() => removeCertification(certification.id)}
-              variant="ghost"
-              size="sm"
-              className="absolute top-2 right-2 text-red-500 hover:text-red-700 hover:bg-red-50"
-            >
-              <Trash2 className="w-4 h-4" />
-            </Button>
-          )}
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Certification Name *</label>
-              <input
-                type="text"
-                value={certification.name}
-                onChange={(e) => updateCertification(certification.id, "name", e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="e.g., AWS Certified Solutions Architect"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Issuing Organization *</label>
-              <input
-                type="text"
-                value={certification.organization}
-                onChange={(e) => updateCertification(certification.id, "organization", e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="e.g., Amazon Web Services"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Issue Date *</label>
-              <input
-                type="month"
-                value={certification.issueDate}
-                onChange={(e) => updateCertification(certification.id, "issueDate", e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Expiry Date</label>
-              <input
-                type="month"
-                value={certification.expiryDate}
-                onChange={(e) => updateCertification(certification.id, "expiryDate", e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Credential ID</label>
-              <input
-                type="text"
-                value={certification.credentialId}
-                onChange={(e) => updateCertification(certification.id, "credentialId", e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Credential ID or License Number"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Credential URL</label>
-              <input
-                type="url"
-                value={certification.credentialUrl}
-                onChange={(e) => updateCertification(certification.id, "credentialUrl", e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="https://..."
-              />
-            </div>
+    <div className="card p-8 space-y-6">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center">
+            <FiAward className="text-xl text-yellow-600" />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold text-gray-900">Certifications</h3>
+            <p className="text-gray-600 text-sm">Showcase your professional certifications</p>
           </div>
         </div>
-      ))}
+        <button className="btn-secondary flex items-center space-x-2">
+          <FiPlus className="w-4 h-4" />
+          <span>Add Certification</span>
+        </button>
+      </div>
+      
+      <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 space-y-4">
+        <div className="flex items-center justify-between">
+          <span className="text-xs bg-blue-100 text-blue-600 px-3 py-1 rounded-full font-semibold">
+            Active Certification
+          </span>
+          <button className="text-red-500 hover:text-red-600 p-2 hover:bg-red-50 rounded-lg transition-colors duration-200">
+            <FiTrash className="w-4 h-4" />
+          </button>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <label className="text-sm font-semibold text-gray-700">Certification Name *</label>
+            <input className="input" placeholder="e.g., AWS Solutions Architect" />
+          </div>
+          <div className="space-y-2">
+            <label className="text-sm font-semibold text-gray-700">Issuing Organization *</label>
+            <input className="input" placeholder="e.g., Amazon Web Services" />
+          </div>
+          <div className="space-y-2">
+            <label className="text-sm font-semibold text-gray-700">Issue Date</label>
+            <input className="input" type="date" />
+          </div>
+          <div className="space-y-2">
+            <label className="text-sm font-semibold text-gray-700">Expiry Date</label>
+            <input className="input" type="date" placeholder="Leave empty if no expiry" />
+          </div>
+          <div className="space-y-2 md:col-span-2">
+            <label className="text-sm font-semibold text-gray-700">Credential URL</label>
+            <input className="input" placeholder="https://credential-url.com" type="url" />
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
