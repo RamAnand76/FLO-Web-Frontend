@@ -103,7 +103,7 @@ Visit `http://localhost:3000` to view the app.
   * `main` – clean stable production
   * `production` – deployment
   * `dev` – integration branch
-  * `dev_index`, `dev_profile`, `dev_templates` – page-specific work
+  * `feature/index`, `feature/profile`, `feature/templates` – page-specific work
 
 ### 📘 Git Commands to Use
 
