@@ -1,31 +1,15 @@
-"use client"
-
-import type { ReactNode } from "react"
-
-interface ActionCardProps {
-  icon: ReactNode
-  label: string
-  description: string
-  color: "blue" | "green" | "purple" | "orange"
-  onClick?: () => void
-}
-
-const colorClasses = {
-  blue: "bg-blue-50 hover:bg-blue-100 text-blue-600 border-blue-200",
-  green: "bg-green-50 hover:bg-green-100 text-green-600 border-green-200",
-  purple: "bg-purple-50 hover:bg-purple-100 text-purple-600 border-purple-200",
-  orange: "bg-orange-50 hover:bg-orange-100 text-orange-600 border-orange-200",
-}
-
-export default function ActionCard({ icon, label, description, color, onClick }: ActionCardProps) {
+export default function ActionCard({ icon, label, onClick }: { icon: React.ReactNode; label: string; onClick?: () => void; }) {
   return (
-    <button
-      onClick={onClick}
-      className={`p-6 rounded-xl border-2 transition-all duration-200 hover:shadow-md hover:scale-105 text-left ${colorClasses[color]}`}
+    <div 
+      onClick={onClick} 
+      className="group bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center justify-center text-gray-600 hover:bg-gradient-to-br hover:from-blue-50 hover:to-purple-50 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
     >
-      <div className="mb-3">{icon}</div>
-      <h4 className="font-semibold text-gray-900 mb-1">{label}</h4>
-      <p className="text-sm text-gray-600">{description}</p>
-    </button>
-  )
+      <div className="text-3xl mb-3 text-gray-500 group-hover:text-blue-600 group-hover:scale-110 transition-all duration-300">
+        {icon}
+      </div>
+      <span className="font-semibold text-gray-700 group-hover:text-blue-700 transition-colors duration-300">
+        {label}
+      </span>
+    </div>
+  );
 }
