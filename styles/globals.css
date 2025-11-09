@@ -93,14 +93,15 @@
 }
 
 .search-icon {
-  @apply absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 transition-all;
+  @apply absolute left-4 top-1/2 text-gray-400 w-5 h-5 transition-colors;
+  transform: translateY(-50%);
+  pointer-events: none;
   transition-duration: var(--animation-normal);
   transition-timing-function: var(--ease-out-cubic);
 }
 
 .search-icon-focused {
   @apply text-blue-500;
-  transform: translateY(-50%) scale(1.1);
 }
 
 @media (min-width: 1024px) {
