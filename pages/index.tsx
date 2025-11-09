@@ -2,61 +2,42 @@ import Header from '../components/Header';
 import ActionCard from '../components/ActionCard';
 import MetricCard from '../components/MetricCard';
 import PortfolioCard from '../components/PortfolioCard';
-import { FiUpload, FiPlus, FiCode, FiCoffee, FiTrendingUp, FiActivity, FiUsers, FiDollarSign } from 'react-icons/fi';
+import { FiUpload, FiPlus, FiCode, FiCoffee } from 'react-icons/fi';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
 
 export default function HomePage() {
   const router = useRouter();
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20
-      });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
+  
   return (
     <div className="page-layout">
       <div className="layout-container">
         <Header />
         
         {/* Welcome Section */}
-        <div className="hero-section spacing-section">
-          <div className="hero-background">
-            <div className="hero-sphere hero-sphere-1" style={{ transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)` }}></div>
-            <div className="hero-sphere hero-sphere-2" style={{ transform: `translate(${-mousePosition.x * 0.5}px, ${-mousePosition.y * 0.5}px)` }}></div>
-            <div className="hero-sphere hero-sphere-3" style={{ transform: `translate(${mousePosition.x * 0.8}px, ${mousePosition.y * 0.8}px)` }}></div>
-            <div className="hero-grid"></div>
-          </div>
-          <div className="hero-content">
-            <div className="hero-text-container">
-              <div className="hero-badge">Premium Dashboard</div>
-              <h2 className="hero-title">Welcome back, Designer!</h2>
-              <p className="hero-subtitle">Ready to create something amazing today?</p>
+        <div className="welcome-section spacing-section">
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="welcome-content">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">Welcome back, Designer! 👋</h2>
+              <p className="text-blue-100 text-base md:text-lg font-medium">Ready to create something amazing today?</p>
             </div>
-            <button
-              onClick={() => router.push('/templates')}
-              className="hero-cta"
+            <button 
+              onClick={() => router.push('/templates')} 
+              className="bg-white/20 backdrop-blur-sm text-white px-6 md:px-8 py-3 md:py-4 rounded-2xl hover:bg-white/30 transition-all duration-300 font-semibold border border-white/20 hover:scale-105 text-sm md:text-base"
             >
-              <span>Start New Project</span>
-              <div className="hero-cta-shine"></div>
+              Start New Project ✨
             </button>
           </div>
+          <div className="absolute -top-4 -right-4 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+          <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-white/5 rounded-full blur-2xl"></div>
         </div>
 
         {/* Quick Actions */}
         <div className="spacing-section">
-          <div className="section-header-3d">
-            <h3 className="section-title-3d">
+          <div className="section-header">
+            <h3 className="section-title">
               Quick Actions
             </h3>
-            <p className="section-subtitle">Accelerate your workflow</p>
           </div>
           <div className="action-cards-grid">
             <ActionCard icon={<FiUpload />} label="Upload Assets" onClick={() => router.push('/templates')} />
@@ -68,57 +49,31 @@ export default function HomePage() {
 
         {/* Analytics Dashboard */}
         <div className="spacing-section">
-          <div className="section-header-3d">
-            <div>
-              <h3 className="section-title-3d">
-                Analytics Overview
-              </h3>
-              <p className="section-subtitle">Real-time performance metrics</p>
-            </div>
-            <select className="select-3d">
+          <div className="section-header">
+            <h3 className="section-title">
+              Analytics Overview
+            </h3>
+            <select className="bg-white border border-gray-200 rounded-xl px-4 py-2 text-sm font-medium text-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-50 focus:border-blue-500">
               <option>Last 30 days</option>
               <option>Last 7 days</option>
               <option>Last 90 days</option>
             </select>
           </div>
           <div className="metrics-grid">
-            <div className="metric-card-3d">
-              <div className="metric-icon-container metric-icon-blue">
-                <FiTrendingUp className="metric-icon" />
-              </div>
-              <MetricCard label="Total Views" value="12,847" change="+23%" />
-            </div>
-            <div className="metric-card-3d">
-              <div className="metric-icon-container metric-icon-green">
-                <FiActivity className="metric-icon" />
-              </div>
-              <MetricCard label="Engagement Rate" value="8.4%" change="+12%" />
-            </div>
-            <div className="metric-card-3d">
-              <div className="metric-icon-container metric-icon-orange">
-                <FiUsers className="metric-icon" />
-              </div>
-              <MetricCard label="New Followers" value="1,284" change="+18%" />
-            </div>
-            <div className="metric-card-3d">
-              <div className="metric-icon-container metric-icon-purple">
-                <FiDollarSign className="metric-icon" />
-              </div>
-              <MetricCard label="Revenue" value="$4,250" change="+31%" />
-            </div>
+            <MetricCard label="Total Views" value="12,847" change="+23%" />
+            <MetricCard label="Engagement Rate" value="8.4%" change="+12%" />
+            <MetricCard label="New Followers" value="1,284" change="+18%" />
+            <MetricCard label="Revenue" value="$4,250" change="+31%" />
           </div>
         </div>
 
         {/* Portfolio Showcase */}
         <div className="spacing-section">
-          <div className="section-header-3d">
-            <div>
-              <h3 className="section-title-3d">
-                Your Portfolio Showcase
-              </h3>
-              <p className="section-subtitle">Featured projects and designs</p>
-            </div>
-            <button className="btn-link-3d">
+          <div className="section-header">
+            <h3 className="section-title">
+              Your Portfolio Showcase
+            </h3>
+            <button className="text-blue-600 hover:text-blue-700 font-semibold text-sm hover:underline transition-all duration-200">
               View All Projects →
             </button>
           </div>
