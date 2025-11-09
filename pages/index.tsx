@@ -40,10 +40,10 @@ export default function HomePage() {
             </h3>
           </div>
           <div className="action-cards-grid">
-            <ActionCard icon={<FiUpload />} label="Upload Assets" onClick={() => router.push('/templates')} />
-            <ActionCard icon={<FiPlus />} label="New Project" onClick={() => router.push('/templates')} />
-            <ActionCard icon={<FiCode />} label="Code Editor" />
-            <ActionCard icon={<FiCoffee />} label="Take a Break" />
+            <ActionCard icon={<FiUpload />} label="Upload Assets" color="blue" onClick={() => router.push('/templates')} />
+            <ActionCard icon={<FiPlus />} label="New Project" color="green" onClick={() => router.push('/templates')} />
+            <ActionCard icon={<FiCode />} label="Code Editor" color="orange" />
+            <ActionCard icon={<FiCoffee />} label="Take a Break" color="red" />
           </div>
         </div>
 
