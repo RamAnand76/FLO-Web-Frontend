@@ -218,6 +218,31 @@
   }
 }
 
+/* Premium Metric Card Styles */
+.metric-card-premium {
+  @apply relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-white p-6 rounded-2xl border border-gray-200/60 transition-all duration-300 cursor-pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.metric-card-premium::before {
+  content: '';
+  @apply absolute inset-0 rounded-2xl;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
+.metric-card-premium:hover {
+  @apply border-blue-200/80;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transform: translateY(-4px);
+}
+
+.metric-card-shine {
+  @apply absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8) 0%, transparent 50%);
+  pointer-events: none;
+}
+
 /* Action Card Label */
 .action-card-label {
   @apply font-semibold text-gray-700 transition-all text-center;

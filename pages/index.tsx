@@ -47,11 +47,11 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Analytics Dashboard */}
+        {/* Portfolio Performance */}
         <div className="spacing-section">
           <div className="section-header">
             <h3 className="section-title">
-              Analytics Overview
+              Portfolio Performance
             </h3>
             <select className="bg-white border border-gray-200 rounded-xl px-4 py-2 text-sm font-medium text-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-50 focus:border-blue-500">
               <option>Last 30 days</option>
@@ -60,10 +60,10 @@ export default function HomePage() {
             </select>
           </div>
           <div className="metrics-grid">
-            <MetricCard label="Total Views" value="12,847" change="+23%" />
-            <MetricCard label="Engagement Rate" value="8.4%" change="+12%" />
-            <MetricCard label="New Followers" value="1,284" change="+18%" />
-            <MetricCard label="Revenue" value="$4,250" change="+31%" />
+            <MetricCard label="Portfolio Views" value="12,847" change="+23%" />
+            <MetricCard label="Visitor Engagement" value="8.4%" change="+12%" />
+            <MetricCard label="Portfolio Shares" value="1,284" change="+18%" />
+            <MetricCard label="Opportunities" value="24" change="+31%" />
           </div>
         </div>
 
