@@ -1,4 +1,4 @@
-import Header from '../components/Header';
+import Navigation from '../components/Navigation';
 import ActionCard from '../components/ActionCard';
 import MetricCard from '../components/MetricCard';
 import PortfolioCard from '../components/PortfolioCard';
@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <div className="page-layout">
       <div className="layout-container">
-        <Header />
+        <Navigation />
         
         {/* Welcome Section */}
         <div className="welcome-section spacing-section">
