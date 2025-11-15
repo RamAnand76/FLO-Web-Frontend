@@ -11,30 +11,24 @@
   --container-padding-x: 1.5rem;
   --header-height: 80px;
   --content-spacing: 2rem;
-
+  
   /* Animation Variables */
   --animation-fast: 0.15s;
   --animation-normal: 0.3s;
   --animation-slow: 0.5s;
   --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
   --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  /* Color Variables - Softer, More Comfortable Palette */
-  --color-primary: #3b82f6;
-  --color-primary-hover: #2563eb;
-  --color-secondary: #8b5cf6;
-  --color-secondary-hover: #7c3aed;
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-info: #06b6d4;
-
-  /* Softer Background Colors */
-  --color-bg-primary: #f9fafb;
-  --color-bg-secondary: #ffffff;
-  --color-bg-elevated: #ffffff;
-
+  
+  /* Color Variables for Accessibility */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-secondary: #7c3aed;
+  --color-secondary-hover: #6d28d9;
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+  --color-info: #0891b2;
+  
   /* Responsive breakpoints */
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
@@ -565,10 +559,10 @@
   }
 }
 
-/* Base Theme - Softer, More Comfortable */
+/* Base Theme */
 :root {
-  --background: #f8f9fa;
-  --foreground: #1f2937;
+  --background: #fafafa;
+  --foreground: #171717;
 }
 
 @theme inline {
@@ -579,8 +573,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #111827;
-    --foreground: #f3f4f6;
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
 }
 
@@ -590,28 +584,24 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-feature-settings: 'cv11', 'ss01';
   font-variation-settings: 'opsz' 32;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar - Softer appearance */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
   background: #f1f5f9;
-  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #cbd5e1 0%, #94a3b8 100%);
-  border-radius: 10px;
-  border: 2px solid #f1f5f9;
+  background: #cbd5e1;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #94a3b8 0%, #64748b 100%);
+  background: #94a3b8;
 }
 
 /* Smooth animations */
@@ -701,118 +691,16 @@ body {
   .action-card {
     @apply border-2 border-gray-400;
   }
-
+  
   .action-card:hover {
     @apply border-blue-600;
   }
-
+  
   .btn-primary {
     @apply border-2 border-blue-800;
   }
-
+  
   .btn-secondary {
     @apply border-2 border-gray-400;
   }
-}
-
-/* Advanced Animation Utilities */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes pulse-subtle {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-@keyframes slide-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-pulse-subtle {
-  animation: pulse-subtle 2s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  animation: shimmer 2s linear infinite;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  background-size: 1000px 100%;
-}
-
-.animate-slide-in-up {
-  animation: slide-in-up 0.5s ease-out;
-}
-
-.animate-fade-in {
-  animation: fade-in 0.4s ease-out;
-}
-
-.animate-scale-in {
-  animation: scale-in 0.3s ease-out;
-}
-
-/* Staggered animation delays */
-.animate-delay-100 {
-  animation-delay: 100ms;
-}
-
-.animate-delay-200 {
-  animation-delay: 200ms;
-}
-
-.animate-delay-300 {
-  animation-delay: 300ms;
-}
-
-.animate-delay-400 {
-  animation-delay: 400ms;
 }

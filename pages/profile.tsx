@@ -1,4 +1,4 @@
-import Navigation from '../components/Navigation';
+import Header from '../components/Header';
 import ProfileForm from '../components/forms/ProfileForm';
 import EducationForm from '../components/forms/EducationForm';
 import ExperienceForm from '../components/forms/ExperienceForm';
@@ -9,7 +9,7 @@ export default function ProfilePage() {
   return (
     <div className="page-layout">
       <div className="layout-container">
-        <Navigation />
+        <Header />
         
         {/* Page Header */}
         <div className="profile-header">
