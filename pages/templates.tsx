@@ -1,42 +1,125 @@
-import Header from '../components/Header';
+import Navigation from '../components/Navigation';
 import TemplateCard from '../components/TemplateCard';
-import { FiUpload, FiPlus } from 'react-icons/fi';
+import { FiUpload, FiPlus, FiStar, FiTrendingUp, FiZap } from 'react-icons/fi';
+import { useRouter } from 'next/router';
 
 export default function TemplatesPage() {
+  const router = useRouter();
+
+  const templates = [
+    { id: 1, name: 'Minimalist Pro', category: 'Professional', featured: true },
+    { id: 2, name: 'Creative Studio', category: 'Creative', featured: true },
+    { id: 3, name: 'Tech Developer', category: 'Technical', featured: false },
+    { id: 4, name: 'Designer Portfolio', category: 'Design', featured: false },
+    { id: 5, name: 'Modern Business', category: 'Business', featured: false },
+    { id: 6, name: 'Photography Pro', category: 'Photography', featured: false },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900 px-6 py-8">
-      <Header />
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold">Profile Templates</h2>
-        <p className="text-gray-500">Select a premium template or create your own to showcase your work</p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-        <div className="bg-white p-6 rounded-xl shadow hover:shadow-md transition">
-          <p className="text-sm text-blue-600 mb-2">TEMPLATE CREATION</p>
-          <div className="flex items-center gap-3 mb-4 text-blue-700">
-            <FiPlus className="text-xl" />
-            <h3 className="text-lg font-semibold">Create Your Own</h3>
+    <div className="page-layout">
+      <div className="layout-container">
+        <Navigation />
+
+        <div className="welcome-section spacing-section">
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="welcome-content">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">Choose Your Perfect Template</h2>
+              <p className="text-blue-100 text-base md:text-lg font-medium">
+                Handcrafted designs to showcase your work beautifully
+              </p>
+            </div>
+            <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/30">
+              <FiStar className="text-yellow-300" />
+              <span className="text-sm font-semibold text-white">{templates.length} Premium Templates</span>
+            </div>
           </div>
-          <p className="text-gray-500 mb-4">Start with a blank canvas and build a unique portfolio that reflects your personal style.</p>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Start Creating →</button>
+          <div className="absolute -top-4 -right-4 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+          <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-white/5 rounded-full blur-2xl"></div>
         </div>
-        <div className="bg-white p-6 rounded-xl shadow hover:shadow-md transition">
-          <p className="text-sm text-blue-600 mb-2">IMPORT OPTION</p>
-          <div className="flex items-center gap-3 mb-4 text-blue-700">
-            <FiUpload className="text-xl" />
-            <h3 className="text-lg font-semibold">Import Template</h3>
+
+        <div className="spacing-section">
+          <div className="section-header">
+            <h3 className="section-title">Quick Actions</h3>
           </div>
-          <p className="text-gray-500 mb-4">Upload your existing design or import from external sources.</p>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Import Now →</button>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="card-premium p-6 md:p-8 group cursor-pointer hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-all duration-300 group-hover:scale-110">
+                  <FiPlus className="text-xl text-white" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">Template Creation</p>
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900">Create Your Own</h3>
+                </div>
+              </div>
+              <p className="text-gray-600 mb-6">
+                Start with a blank canvas and build a unique portfolio that reflects your personal style and creativity.
+              </p>
+              <button
+                onClick={() => router.push('/profile')}
+                className="btn-primary w-full flex items-center justify-center space-x-2"
+              >
+                <span>Start Creating</span>
+                <FiZap className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="card-premium p-6 md:p-8 group cursor-pointer hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 group-hover:shadow-green-500/50 transition-all duration-300 group-hover:scale-110">
+                  <FiUpload className="text-xl text-white" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-green-600 uppercase tracking-wider mb-1">Import Option</p>
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900">Import Template</h3>
+                </div>
+              </div>
+              <p className="text-gray-600 mb-6">
+                Upload your existing design or import from external sources to get started quickly with your portfolio.
+              </p>
+              <button className="btn-secondary w-full flex items-center justify-center space-x-2">
+                <span>Import Now</span>
+                <FiUpload className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-      <h3 className="text-lg font-semibold mb-1">Premium Templates</h3>
-      <p className="text-gray-500 mb-4">Handcrafted designs with futuristic aesthetics</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <TemplateCard />
-        <TemplateCard />
-        <TemplateCard />
-        <TemplateCard />
+
+        <div className="spacing-section">
+          <div className="section-header">
+            <h3 className="section-title">Featured Templates</h3>
+            <div className="flex items-center space-x-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-xl font-semibold text-sm shadow-lg shadow-orange-500/30">
+              <FiTrendingUp className="w-4 h-4" />
+              <span>Most Popular</span>
+            </div>
+          </div>
+          <div className="template-grid">
+            {templates
+              .filter((t) => t.featured)
+              .map((template) => (
+                <TemplateCard key={template.id} template={template} />
+              ))}
+          </div>
+        </div>
+
+        <div className="spacing-section">
+          <div className="section-header">
+            <h3 className="section-title">All Templates</h3>
+            <select className="bg-white border border-gray-200 rounded-xl px-4 py-2 text-sm font-medium text-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-50 focus:border-blue-500">
+              <option>All Categories</option>
+              <option>Professional</option>
+              <option>Creative</option>
+              <option>Technical</option>
+              <option>Business</option>
+            </select>
+          </div>
+          <div className="template-grid">
+            {templates.map((template) => (
+              <TemplateCard key={template.id} template={template} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
