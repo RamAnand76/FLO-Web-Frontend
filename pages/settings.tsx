@@ -1,10 +1,10 @@
-import Header from '../components/Header';
+import Navigation from '../components/Navigation';
 
 export default function SettingsPage() {
   return (
     <div className="page-layout">
       <div className="layout-container">
-        <Header />
+        <Navigation />
         
         <div className="spacing-component">
           <h1 className="text-responsive-xl font-bold text-blue-600 mb-6">Settings</h1>
